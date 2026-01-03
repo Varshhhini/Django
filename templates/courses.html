@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    {% extends 'base.html' %}
+  {% extends 'base.html' %}
 {% block title %}Courses{% endblock %}
 
 {% block content %}
@@ -15,24 +15,28 @@
 
 <div class="course-grid">
     {% for course in courses %}
-        <div class="course-card">
-            {% if course.image %}
-                <img src="{{ course.image.url }}" alt="{{ course.title }}">
-            {% endif %}
+       <div class="course-card">
+    {% if course.image %}
+        <img src="{{ course.image.url }}" alt="{{ course.title }}">
+    {% endif %}
 
-            <h3>{{ course.title }}</h3>
-            <p>{{ course.description|truncatewords:18 }}</p>
-            <p class="price">₹{{ course.price }}</p>
+    <div class="course-content">
+        <h3>{{ course.title }}</h3>
+        <p>{{ course.description|truncatewords:18 }}</p>
+        <p class="price">₹{{ course.price }}</p>
+    </div>
 
-            <a href="{% url 'enroll' course.id %}" class="btn-sm dark">
-                Enroll Now
-            </a>
-        </div>
+    <a href="{% url 'enroll' course.id %}" class="btn-sm dark enroll-btn">
+        Enroll Now
+    </a>
+</div>
+
     {% empty %}
         <p>No courses available.</p>
     {% endfor %}
 </div>
 {% endblock %}
+
 
 
 </body>

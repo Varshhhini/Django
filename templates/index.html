@@ -5,16 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-  {% extends 'base.html' %}
+<b{% extends 'base.html' %}
 {% block title %}Home{% endblock %}
 
 {% block content %}
+
+<!-- HERO -->
 <section class="hero">
-    <h1>Learn Coding the Right Way</h1>
-    <p>Build skills that matter in real life</p>
-    <a href="{% url 'course_list' %}" class="btn">Explore Courses</a>
+    <div class="hero-content">
+        <h1>Learn Skills That Matter</h1>
+        <p>Industry-ready courses designed for real-world success</p>
+        <a href="{% url 'course_list' %}" class="hero-btn">Explore Courses</a>
+        
+    </div>
 </section>
+
+<!-- STATS -->
+<section class="stats">
+    <div class="stat-box">
+        <h2>50K+</h2>
+        <p>Students Trained</p>
+    </div>
+    <div class="stat-box">
+        <h2>100+</h2>
+        <p>Industry Projects</p>
+    </div>
+    <div class="stat-box">
+        <h2>10+</h2>
+        <p>Expert Mentors</p>
+    </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="why">
+    <h2>Why Choose Us?</h2>
+
+    <div class="why-grid">
+        <div class="why-card">Live Practical Training</div>
+        <div class="why-card">Industry-Level Projects</div>
+        <div class="why-card">Job-Oriented Curriculum</div>
+        <div class="why-card">Mentorship Support</div>
+    </div>
+</section>
+
 {% endblock %}
 
 </body>

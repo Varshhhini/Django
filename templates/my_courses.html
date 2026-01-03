@@ -6,7 +6,7 @@
     <title>My Courses</title>
 </head>
 <body>
-  {% extends 'base.html' %}
+{% extends 'base.html' %}
 {% block title %}My Courses{% endblock %}
 
 {% block content %}
@@ -16,7 +16,7 @@
     {% for enroll in enrollments %}
         <div class="course-card">
             {% if enroll.course.image %}
-                <img src="{{ enroll.course.image.url }}" alt="{{ enroll.course.title }}">
+                <img src="{{ enroll.course.image.url }}">
             {% endif %}
 
             <h3>{{ enroll.course.title }}</h3>
@@ -25,7 +25,7 @@
             <p class="price">₹{{ enroll.course.price }}</p>
         </div>
     {% empty %}
-        <p>You have not enrolled in any course yet.</p>
+        <p>You have not enrolled in any courses yet.</p>
     {% endfor %}
 </div>
 {% endblock %}
