@@ -6,14 +6,13 @@
     <title>My Courses</title>
 </head>
 <body>
-    {% extends 'base.html' %}
-
+  {% extends 'base.html' %}
 {% block title %}My Courses{% endblock %}
 
 {% block content %}
-<h2>My Enrolled Courses</h2>
+<h2 class="page-title">My Enrolled Courses</h2>
 
-<div class="course-container">
+<div class="course-grid">
     {% for enroll in enrollments %}
         <div class="course-card">
             {% if enroll.course.image %}
@@ -21,14 +20,17 @@
             {% endif %}
 
             <h3>{{ enroll.course.title }}</h3>
-            <p>{{ enroll.course.description|truncatewords:15 }}</p>
-            <p><strong>Duration:</strong> {{ enroll.course.duration }}</p>
+            <p>{{ enroll.course.description|truncatewords:18 }}</p>
+            <p><b>Duration:</b> {{ enroll.course.duration }}</p>
+            <p class="price">₹{{ enroll.course.price }}</p>
         </div>
     {% empty %}
-        <p>You have not enrolled in any courses yet.</p>
+        <p>You have not enrolled in any course yet.</p>
     {% endfor %}
 </div>
 {% endblock %}
+
+
 
 </body>
 </html>

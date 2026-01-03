@@ -6,6 +6,16 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Welcome to the Home Page</h1>
+  {% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <h1>Learn Coding the Right Way</h1>
+    <p>Build skills that matter in real life</p>
+    <a href="{% url 'course_list' %}" class="btn">Explore Courses</a>
+</section>
+{% endblock %}
+
 </body>
 </html>

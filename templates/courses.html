@@ -1,12 +1,19 @@
-{% extends 'base.html' %}
-{% load static %}
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends 'base.html' %}
 {% block title %}Courses{% endblock %}
 
 {% block content %}
-<h2>Our Courses</h2>
+<h2 class="page-title">Our Courses</h2>
 
-<div class="course-container">
+<div class="course-grid">
     {% for course in courses %}
         <div class="course-card">
             {% if course.image %}
@@ -14,19 +21,19 @@
             {% endif %}
 
             <h3>{{ course.title }}</h3>
+            <p>{{ course.description|truncatewords:18 }}</p>
+            <p class="price">₹{{ course.price }}</p>
 
-            <p>{{ course.description|truncatewords:15 }}</p>
-
-            <p><strong>Duration:</strong> {{ course.duration }}</p>
-            <p><strong>Price:</strong> ₹{{ course.price }}</p>
-
-            <a href="{% url 'enroll' course.id %}">
-                <button>Enroll Now</button>
+            <a href="{% url 'enroll' course.id %}" class="btn-sm dark">
+                Enroll Now
             </a>
-
         </div>
     {% empty %}
         <p>No courses available.</p>
     {% endfor %}
 </div>
 {% endblock %}
+
+
+</body>
+</html>
