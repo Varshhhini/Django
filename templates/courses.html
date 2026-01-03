@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Courses{% endblock %}
+
+{% block content %}
+<h2>Our Courses</h2>
+
+<div class="course-container">
+    {% for course in courses %}
+        <div class="course-card">
+            {% if course.image %}
+                <img src="{{ course.image.url }}" alt="{{ course.title }}">
+            {% endif %}
+
+            <h3>{{ course.title }}</h3>
+
+            <p>{{ course.description|truncatewords:15 }}</p>
+
+            <p><strong>Duration:</strong> {{ course.duration }}</p>
+            <p><strong>Price:</strong> ₹{{ course.price }}</p>
+
+            <a href="{% url 'enroll' course.id %}">
+                <button>Enroll Now</button>
+            </a>
+
+        </div>
+    {% empty %}
+        <p>No courses available.</p>
+    {% endfor %}
+</div>
+{% endblock %}
