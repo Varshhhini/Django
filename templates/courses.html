@@ -1,43 +1,67 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-  {% extends 'base.html' %}
+{% extends 'base.html' %}
 {% block title %}Courses{% endblock %}
 
 {% block content %}
-<h2 class="page-title">Our Courses</h2>
 
-<div class="course-grid">
-    {% for course in courses %}
-       <div class="course-card">
-    {% if course.image %}
-        <img src="{{ course.image.url }}" alt="{{ course.title }}">
-    {% endif %}
+<!-- ================= COURSES HERO ================= -->
+<section class="courses-hero">
 
-    <div class="course-content">
-        <h3>{{ course.title }}</h3>
-        <p>{{ course.description|truncatewords:18 }}</p>
-        <p class="price">₹{{ course.price }}</p>
+    <div class="courses-hero-inner">
+        <h1>
+            We're not a <span>course</span><br>
+            <span class="highlight">factory.</span>
+        </h1>
+
+        <p class="courses-sub">
+            We focus on courses that really help.
+        </p>
+
+        <div class="scroll-down">
+            
+            Courses which do work ↓
+        </div>
     </div>
 
-    <a href="{% url 'enroll' course.id %}" class="btn-sm dark enroll-btn">
-        Enroll Now
-    </a>
-</div>
+</section>
 
-    {% empty %}
-        <p>No courses available.</p>
-    {% endfor %}
-</div>
+<!-- ================= COURSES LIST ================= -->
+<section class="courses-section">
+
+    <div class="courses-grid">
+
+        {% for course in courses %}
+        <div class="course-card dark-card">
+
+            {% if course.image %}
+            <img src="{{ course.image.url }}" alt="{{ course.title }}">
+            {% endif %}
+
+            <div class="course-body">
+                <h3>{{ course.title }}</h3>
+
+                <div class="tags">
+                    <span class="tag live">LIVE BATCH</span>
+                    <span class="tag lang">HINGLISH</span>
+                </div>
+
+                <p class="desc">
+                    {{ course.description|truncatechars:120 }}
+                </p>
+
+                <div class="price-box">
+                    <span class="price">₹ {{ course.price }}</span>
+                </div>
+            </div>
+
+            <a href="{% url 'enroll' course.id %}" class="course-btn">
+                View Details
+            </a>
+
+        </div>
+        {% endfor %}
+
+    </div>
+
+</section>
+
 {% endblock %}
-
-
-
-</body>
-</html>

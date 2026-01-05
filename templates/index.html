@@ -1,54 +1,156 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<b{% extends 'base.html' %}
+{% extends 'base.html' %}
 {% block title %}Home{% endblock %}
 
 {% block content %}
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 <section class="hero">
-    <div class="hero-content">
-        <h1>Learn Skills That Matter</h1>
-        <p>Industry-ready courses designed for real-world success</p>
-        <a href="{% url 'course_list' %}" class="hero-btn">Explore Courses</a>
-        
+    <div class="hero-inner">
+        <h1 class="hero-title">
+            We only <span>teach</span><br>
+            what we are really<br>
+            really <i>good</i> at.
+        </h1>
+
+        <p class="hero-sub">
+            Get ready to accelerate your career with customized courses
+            and leave your mark in the tech industry
+        </p>
+
+        <a href="{% url 'course_list' %}" class="hero-btn">
+            Check Courses – Make an Impact
+        </a>
+
+        <div class="hero-stats">
+            <div>
+                <h2>250K+</h2>
+                <p>Students taught</p>
+            </div>
+            <div>
+                <h2>20+</h2>
+                <p>Instructors</p>
+            </div>
+            <div>
+                <h2>618K+</h2>
+                <p>YouTube Subs.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-side-text">
+        <p>
+            Get ready to <span>accelerate your career</span><br>
+            with customized courses and leave your mark
+            in the tech industry
+        </p>
     </div>
 </section>
 
-<!-- STATS -->
-<section class="stats">
-    <div class="stat-box">
-        <h2>50K+</h2>
-        <p>Students Trained</p>
+<!-- ================= CONCEPT / VIDEO ================= -->
+<section class="dark-section center">
+    <h2 class="section-title">
+        we do whatever it takes to help you<br>
+        <span>understand the concepts.</span>
+    </h2>
+
+    <div class="video-box">
+        <iframe
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            title="Concept Video"
+            frameborder="0"
+            allowfullscreen>
+        </iframe>
     </div>
-    <div class="stat-box">
-        <h2>100+</h2>
-        <p>Industry Projects</p>
-    </div>
-    <div class="stat-box">
-        <h2>10+</h2>
-        <p>Expert Mentors</p>
+
+    <a href="#" class="hero-btn">
+        Explore free learning
+    </a>
+</section>
+
+<!-- ================= COURSES ================= -->
+<section class="dark-section">
+    <h2 class="left-title">Courses Offered.</h2>
+
+    <div class="courses-grid">
+        {% for course in courses %}
+        <div class="course-card-dark">
+
+            {% if course.image %}
+            <div class="course-image">
+                <img src="{{ course.image.url }}" alt="{{ course.title }}">
+            </div>
+            {% endif %}
+
+            <div class="course-body">
+                <h3>{{ course.title }}</h3>
+
+                <p class="course-desc">
+                    {{ course.description|truncatechars:90 }}
+                </p>
+
+                <div class="price-row">
+                    <span class="price">₹ {{ course.price }}</span>
+                    <span class="gst">(+ GST)</span>
+                </div>
+            </div>
+
+            <a href="{% url 'add_to_cart' course.id %}" class="view-btn">
+    Add to Cart
+</a>
+
+
+        </div>
+        {% endfor %}
     </div>
 </section>
 
-<!-- WHY CHOOSE US -->
-<section class="why">
-    <h2>Why Choose Us?</h2>
+<!-- ================= COMPANIES ================= -->
+<section class="dark-section center">
+    <h2 class="section-title">
+        Top <span>companies</span> our students<br>
+        are working with
+    </h2>
 
-    <div class="why-grid">
-        <div class="why-card">Live Practical Training</div>
-        <div class="why-card">Industry-Level Projects</div>
-        <div class="why-card">Job-Oriented Curriculum</div>
-        <div class="why-card">Mentorship Support</div>
+    <div class="company-logos">
+        <span>Amazon</span>
+        <span>Walmart</span>
+        <span>Wipro</span>
+        <span>TCS</span>
+        <span>Mindtree</span>
+        <span>Rapido</span>
     </div>
+
+    <a href="{% url 'course_list' %}" class="hero-btn">
+        Explore Courses
+    </a>
 </section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+    <div class="footer-grid">
+        <div>
+            <h4>Company</h4>
+            <p>About Us</p>
+            <p>Support</p>
+            <p>Privacy Policy</p>
+        </div>
+
+        <div>
+            <h4>Community</h4>
+            <p>Discord</p>
+            <p>Jobs</p>
+        </div>
+
+        <div>
+            <h4>Get in Touch</h4>
+            <p>hello@sheryians.com</p>
+            <p>+91 99993 478545</p>
+        </div>
+    </div>
+
+    <p class="copyright">
+        © 2026 Sheryians Clone. All Rights Reserved.
+    </p>
+</footer>
 
 {% endblock %}
-
-</body>
-</html>
