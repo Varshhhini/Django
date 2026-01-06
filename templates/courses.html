@@ -41,7 +41,7 @@
 
                 <div class="tags">
                     <span class="tag live">LIVE BATCH</span>
-                    <span class="tag lang">HINGLISH</span>
+                   
                 </div>
 
                 <p class="desc">
@@ -53,9 +53,10 @@
                 </div>
             </div>
 
-            <a href="{% url 'enroll' course.id %}" class="course-btn">
-                View Details
-            </a>
+            <a href="{% url 'course_detail' course.id %}" class="hero-btn small">
+    View Details
+</a>
+
 
         </div>
         {% endfor %}
