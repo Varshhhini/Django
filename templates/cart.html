@@ -6,22 +6,53 @@
     <h2 class="left-title">My Cart</h2>
 
     {% if items %}
-        <div class="courses-grid">
-            {% for item in items %}
-            <div class="course-card-dark">
-                {% if item.course.image %}
-                <img src="{{ item.course.image.url }}">
-                {% endif %}
+    <div class="cart-grid">
+        {% for item in items %}
+        <div class="cart-card">
 
-                <div class="course-body">
-                    <h3>{{ item.course.title }}</h3>
-                    <p>₹ {{ item.course.price }}</p>
-                </div>
+            {% if item.course.image %}
+            <div class="cart-image">
+                <img src="{{ item.course.image.url }}" alt="{{ item.course.title }}">
             </div>
-            {% endfor %}
+            {% endif %}
+
+            <div class="cart-body">
+                <h3>{{ item.course.title }}</h3>
+
+                <p class="cart-price">
+                    ₹ {{ item.course.price }} × {{ item.quantity }}
+                </p>
+
+                <p class="cart-total">
+                    Total: ₹ {{ item.course.price|floatformat:0|add:0 }}
+                </p>
+
+                <a href="{% url 'remove_from_cart' item.course.id %}"
+                   class="remove-btn">
+                    Remove
+                </a>
+            </div>
+
         </div>
+        {% endfor %}
+    </div>
+
+    <div class="cart-summary">
+        <h3>Total Amount</h3>
+        <h2>₹ {{ total }}</h2>
+
+        <a href="#" class="hero-btn">
+            Proceed to Checkout
+        </a>
+    </div>
+
     {% else %}
-        <p>Your cart is empty.</p>
+        <div class="empty-state">
+            <h3>Your cart is empty</h3>
+            <a href="{% url 'course_list' %}" class="hero-btn small">
+                Browse Courses
+            </a>
+        </div>
     {% endif %}
 </section>
 {% endblock %}

@@ -6,10 +6,39 @@ from .models import Cart
 @login_required(login_url='login')
 def add_to_cart(request, course_id):
     course = get_object_or_404(Course, id=course_id)
-    Cart.objects.get_or_create(user=request.user, course=course)
+
+    cart_item, created = Cart.objects.get_or_create(
+        user=request.user,
+        course=course
+    )
+
+    if not created:
+        cart_item.quantity += 1
+        cart_item.save()
+
     return redirect('cart')
+
 
 @login_required(login_url='login')
 def cart_view(request):
     items = Cart.objects.filter(user=request.user)
-    return render(request, 'cart.html', {'items': items})
+
+    total = 0
+    for item in items:
+        total += item.course.price * item.quantity
+
+    return render(request, 'cart.html', {
+        'items': items,
+        'total': total
+    })
+
+
+@login_required(login_url='login')
+def remove_from_cart(request, course_id):
+    item = get_object_or_404(
+        Cart,
+        user=request.user,
+        course_id=course_id
+    )
+    item.delete()
+    return redirect('cart')

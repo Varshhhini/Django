@@ -509,4 +509,245 @@ copyright {
     }
 }
 
+/* ================= AUTH PAGES ================= */
+.auth-page {
+    min-height: 100vh;
+    background: radial-gradient(circle at top left, rgba(43,230,181,0.15), transparent 40%),
+                radial-gradient(circle at bottom right, rgba(43,230,181,0.1), transparent 45%),
+                linear-gradient(180deg, #050505, #000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-box {
+    width: 100%;
+    max-width: 420px;
+    background: rgba(20, 20, 20, 0.85);
+    padding: 40px;
+    border-radius: 16px;
+    text-align: center;
+    color: #fff;
+}
+
+.auth-box h1 {
+    font-size: 36px;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+.auth-box input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 16px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.auth-box input::placeholder {
+    color: #888;
+}
+
+.auth-btn {
+    width: 100%;
+    padding: 14px;
+    background: #2be6b5;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #000;
+}
+
+.auth-btn:hover {
+    background: #20caa0;
+}
+
+/* Divider */
+.auth-divider {
+    margin: 25px 0;
+    position: relative;
+    color: #777;
+}
+
+.auth-divider span {
+    background: #141414;
+    padding: 0 12px;
+}
+
+.auth-divider::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #333;
+    z-index: -1;
+}
+
+/* Google button */
+.google-btn {
+    width: 100%;
+    padding: 14px;
+    background: transparent;
+    border: 1px solid #333;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.google-btn:hover {
+    background: #111;
+}
+
+/* Footer */
+.auth-footer {
+    font-size: 14px;
+    color: #aaa;
+}
+
+.auth-footer a {
+    color: #2be6b5;
+    text-decoration: none;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Error */
+.error {
+    color: #ff6b6b;
+    margin-bottom: 15px;
+}
+
+/* ================= MY COURSES ================= */
+
+.enrolled-tag {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 6px 12px;
+    background: rgba(43,230,181,0.15);
+    color: #2be6b5;
+    font-size: 12px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+/* Empty state */
+.empty-state {
+    text-align: center;
+    padding: 80px 20px;
+    color: #ccc;
+}
+
+.empty-state h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+/* ================= CART PAGE ================= */
+
+.cart-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+/* Card */
+.cart-card {
+    background: #111;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+.cart-card:hover {
+    transform: translateY(-4px);
+}
+
+/* Image */
+.cart-image img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+/* Body */
+.cart-body {
+    padding: 18px;
+    color: #fff;
+}
+
+.cart-body h3 {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.cart-price {
+    font-size: 14px;
+    color: #aaa;
+}
+
+.cart-total {
+    margin: 12px 0;
+    font-weight: 600;
+}
+
+/* Remove */
+.remove-btn {
+    font-size: 13px;
+    color: #ff6b6b;
+    text-decoration: none;
+}
+
+.remove-btn:hover {
+    text-decoration: underline;
+}
+
+/* Summary */
+.cart-summary {
+    margin-top: 50px;
+    padding: 30px;
+    background: #111;
+    border-radius: 16px;
+    text-align: right;
+}
+
+.cart-summary h3 {
+    color: #aaa;
+    font-weight: 400;
+}
+
+.cart-summary h2 {
+    font-size: 32px;
+    margin: 10px 0 20px;
+}
+
+/* Empty */
+.empty-state {
+    text-align: center;
+    padding: 80px 20px;
+    color: #ccc;
+}
+
+.empty-state h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+
+
 

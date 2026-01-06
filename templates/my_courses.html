@@ -1,36 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Courses</title>
-</head>
-<body>
 {% extends 'base.html' %}
 {% block title %}My Courses{% endblock %}
 
 {% block content %}
-<h2 class="page-title">My Enrolled Courses</h2>
+<section class="dark-section">
+    <h2 class="left-title">My Enrolled Courses</h2>
 
-<div class="course-grid">
-    {% for enroll in enrollments %}
-        <div class="course-card">
-            {% if enroll.course.image %}
-                <img src="{{ enroll.course.image.url }}">
-            {% endif %}
+    {% if enrollments %}
+        <div class="courses-grid">
+            {% for enroll in enrollments %}
+            <div class="course-card-dark">
 
-            <h3>{{ enroll.course.title }}</h3>
-            <p>{{ enroll.course.description|truncatewords:18 }}</p>
-            <p><b>Duration:</b> {{ enroll.course.duration }}</p>
-            <p class="price">₹{{ enroll.course.price }}</p>
+                {% if enroll.course.image %}
+                <div class="course-image">
+                    <img src="{{ enroll.course.image.url }}" alt="{{ enroll.course.title }}">
+                </div>
+                {% endif %}
+
+                <div class="course-body">
+                    <h3>{{ enroll.course.title }}</h3>
+
+                    <p class="course-desc">
+                        {{ enroll.course.description|truncatechars:90 }}
+                    </p>
+
+                    <span class="enrolled-tag">ENROLLED</span>
+                </div>
+
+                <a href="#" class="view-btn">
+                    Continue Learning
+                </a>
+
+            </div>
+            {% endfor %}
         </div>
-    {% empty %}
-        <p>You have not enrolled in any courses yet.</p>
-    {% endfor %}
-</div>
+    {% else %}
+        <div class="empty-state">
+            <h3>You have not enrolled in any courses yet.</h3>
+            <a href="{% url 'course_list' %}" class="hero-btn small">
+                Browse Courses
+            </a>
+        </div>
+    {% endif %}
+</section>
 {% endblock %}
-
-
-
-</body>
-</html>
