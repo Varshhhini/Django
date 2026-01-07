@@ -13,7 +13,7 @@ def course_detail(request, id):
     course = Course.objects.filter(id=id).first()
 
     if not course:
-        return redirect('course_list')   # safe fallback
+        return redirect('course_list')  
 
     return render(request, 'courses/course_detail.html', {
         'course': course
